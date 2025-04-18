@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Numere Armstrong</title>
+</head>
+<body>
+  <h2>Numere Armstrong într-un interval</h2>
+
+  <label>n1: <input type="number" id="n1"></label><br>
+  <label>n2: <input type="number" id="n2"></label><br>
+  <button onclick="afiseazaArmstrong()">Afișează numere Armstrong</button>
+
+  <p id="rezultat"></p>
+
+  <script>
+    function esteArmstrong(numar) {
+      const cifre = numar.toString().split('').map(Number);
+      const sumaCuburi = cifre.reduce((suma, cifra) => suma + Math.pow(cifra, 3), 0);
+      return sumaCuburi === numar;
+    }
+
+    function afiseazaArmstrong() {
+      const n1 = parseInt(document.getElementById("n1").value);
+      const n2 = parseInt(document.getElementById("n2").value);
+      const rezultat = [];
+
+      for (let i = n1; i <= n2; i++) {
+        if (esteArmstrong(i)) {
+          rezultat.push(i);
+        }
+      }
+
+      document.getElementById("rezultat").innerText = 
+        rezultat.length > 0 ? "Numere Armstrong: " + rezultat.join(", ") 
+                            : "Nu există numere Armstrong în acest interval.";
+    }
+  </script>
+</body>
+</html>

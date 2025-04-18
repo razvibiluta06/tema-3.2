@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Inversează litere</title>
+</head>
+<body>
+  <h2>Inversează literele unui string (a devine z, b devine y...)</h2>
+  <input type="text" id="inputText" placeholder="Scrie un cuvânt">
+  <button onclick="inverseaza()">Inversează</button>
+  <p id="rezultat"></p>
+
+  <script>
+    function inverseazaLitera(litera) {
+      const alfabet = 'abcdefghijklmnopqrstuvwxyz';
+      const index = alfabet.indexOf(litera.toLowerCase());
+      if (index === -1) return litera;
+      const invers = alfabet[25 - index];
+      return litera === litera.toUpperCase() ? invers.toUpperCase() : invers;
+    }
+
+    function inverseaza() {
+      const text = document.getElementById("inputText").value;
+      let rezultat = '';
+      for (let litera of text) {
+        rezultat += inverseazaLitera(litera);
+      }
+      document.getElementById("rezultat").innerText = "Rezultat: " + rezultat;
+    }
+  </script>
+</body>
+</html>
